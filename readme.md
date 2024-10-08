@@ -238,8 +238,7 @@ using Xunit;
 using System.Net.Http;
 using System.Net;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+
 using Consumer;
 using PactNet.Matchers;
 using System.Threading.Tasks;
@@ -264,11 +263,7 @@ namespace tests
             var Config = new PactConfig
             {
                 PactDir = Path.Join("..", "..", "..", "..", "..", "pacts"),
-                Outputters = new[] { new XUnitOutput(output) },
-                DefaultJsonSettings = new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                }
+                Outputters = new[] { new XUnitOutput(output) }
             };
 
             pact = Pact.V3("ApiClient", "ProductService", Config).WithHttpInteractions(port);
@@ -388,9 +383,9 @@ namespace tests
                 _webHost.Start();
 
                 //Act / Assert
-                IPactVerifier pactVerifier = new PactVerifier(config);
+                IPactVerifier pactVerifier = new PactVerifier("ProductService", config);
                 var pactFile = new FileInfo(Path.Join("..", "..", "..", "..", "..", "pacts", "ApiClient-ProductService.json"));
-                pactVerifier.ServiceProvider("ProductService", new Uri(_pactServiceUri))
+                pactVerifier.WithHttpEndpoint(new Uri(_pactServiceUri))
                 .WithFileSource(pactFile)
                 .WithProviderStateUrl(new Uri($"{_pactServiceUri}/provider-states"))
                 .Verify();
@@ -1124,10 +1119,6 @@ The standard logs, don't always give us enough information in case of failure, y
             {
                 PactDir = Path.Join("..", "..", "..", "..", "..", "pacts"),
                 Outputters = new[] { new XUnitOutput(output) },
-                DefaultJsonSettings = new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                },
                 LogLevel = PactLogLevel.Debug // STEP_8
             };
 ```

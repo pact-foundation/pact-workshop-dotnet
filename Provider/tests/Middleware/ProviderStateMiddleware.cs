@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
-using Newtonsoft.Json;
+using System.Text.Json;
 using provider.Model;
 using provider.Repositories;
 
@@ -91,7 +91,7 @@ namespace tests.Middleware
                     jsonRequestBody = await reader.ReadToEndAsync();
                 }
 
-                var providerState = JsonConvert.DeserializeObject<ProviderState>(jsonRequestBody);
+                var providerState = JsonSerializer.Deserialize<ProviderState>(jsonRequestBody);
 
                 //A null or empty provider state key must be handled
                 if (providerState != null && !String.IsNullOrEmpty(providerState.State))
