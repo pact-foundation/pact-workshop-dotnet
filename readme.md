@@ -263,11 +263,7 @@ namespace tests
             var Config = new PactConfig
             {
                 PactDir = Path.Join("..", "..", "..", "..", "..", "pacts"),
-                Outputters = new[] { new XUnitOutput(output) },
-                DefaultJsonSettings = new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                }
+                Outputters = new[] { new XUnitOutput(output) }
             };
 
             pact = Pact.V3("ApiClient", "ProductService", Config).WithHttpInteractions(port);
@@ -1123,10 +1119,6 @@ The standard logs, don't always give us enough information in case of failure, y
             {
                 PactDir = Path.Join("..", "..", "..", "..", "..", "pacts"),
                 Outputters = new[] { new XUnitOutput(output) },
-                DefaultJsonSettings = new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                },
                 LogLevel = PactLogLevel.Debug // STEP_8
             };
 ```

@@ -30,10 +30,6 @@ namespace tests
             {
                 PactDir = Path.Join("..", "..", "..", "..", "..", "pacts"),
                 Outputters = new[] { new XUnitOutput(output) },
-                DefaultJsonSettings = new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                },
                 LogLevel = PactLogLevel.Debug // STEP_8
             };
 
