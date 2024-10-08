@@ -59,9 +59,11 @@ write code in any other language you should be fine.
 
 However before taking part in this workshop please make sure you have:
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/). Make sure you pick version 6.0 for this.
+* [.NET Core SDK](https://www.microsoft.com/net/download/). Make sure you pick version 8.0 for this.
 * An account at [Github.com](www.github.com)!
 * A text editor/IDE that supports .NET Core. Check out [VSCode](https://code.visualstudio.com/)
+
+_Note:_ This workshop uses Pact-Net 5.x and .NET 8. For Pact-Net 4.x & .NET 6, see branch [`master-v4.5.0`](https://github.com/pact-foundation/pact-workshop-dotnet/tree/master-v4.5.0)
 
 ## Workshop Steps
 
