@@ -5,8 +5,6 @@ using Xunit;
 using System.Net.Http;
 using System.Net;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Consumer;
 using PactNet.Matchers;
 using System.Threading.Tasks;
@@ -32,10 +30,6 @@ namespace tests
             {
                 PactDir = Path.Join("..", "..", "..", "..", "..", "pacts"),
                 Outputters = new[] { new XUnitOutput(output) },
-                DefaultJsonSettings = new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                },
                 LogLevel = PactLogLevel.Debug // STEP_8
             };
 

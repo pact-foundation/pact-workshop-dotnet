@@ -5,8 +5,6 @@ using Xunit;
 using System.Net.Http;
 using System.Net;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Consumer;
 using PactNet.Matchers;
 using System.Threading.Tasks;

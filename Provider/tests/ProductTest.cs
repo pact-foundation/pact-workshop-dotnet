@@ -38,9 +38,9 @@ namespace tests
                 _webHost.Start();
 
                 //Act / Assert
-                IPactVerifier pactVerifier = new PactVerifier(config);
+                IPactVerifier pactVerifier = new PactVerifier("ProductService", config);
                 var pactFile = new FileInfo(Path.Join("..", "..", "..", "..", "..", "pacts", "ApiClient-ProductService.json"));
-                pactVerifier.ServiceProvider("ProductService", new Uri(_pactServiceUri))
+                pactVerifier.WithHttpEndpoint(new Uri(_pactServiceUri))
                 .WithFileSource(pactFile)
                 .WithProviderStateUrl(new Uri($"{_pactServiceUri}/provider-states"))
                 .Verify();

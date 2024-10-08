@@ -23,12 +23,12 @@ jobs:
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "6.0.x" # runners already have .Net Framework installed as well
+          dotnet-version: "8.0.x" # runners already have .Net Framework installed as well
 
       # - name: Step 1 - Restore Consumer
       #   run: dotnet restore
