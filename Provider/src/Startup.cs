@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,8 +35,7 @@ namespace Provider
             }
             // app.UseMiddleware<AuthorizationMiddleware>(); // STEP_9
             app.UseRouting();
-            app.UseEndpoints(e => e.MapControllers());
-            
+            app.UseEndpoints(e => e.MapControllers());            
         }
     }
 }
